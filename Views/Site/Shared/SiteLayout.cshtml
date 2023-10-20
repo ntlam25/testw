@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/site/css/home.css">
+    <link rel="stylesheet" href="~/site/css/cart.css">
+    <link rel="stylesheet" href="~/site/css/category.css">
+    <link rel="stylesheet" href="~/site/css/product.css">
+    <link rel="stylesheet" href="~/site/css/search.css">
+    <link rel="stylesheet" href="~/site/css/success.css">
+    <link rel="stylesheet" href="~/site/admin/css/styles.css">
+
+    <script src="~/site/js/jquery-3.3.1.js"></script>
+    <script src="~/site/js/bootstrap.js"></script>
+
+</head>
+<body>
+
+    <!-- header -->
+    @{
+        var partialHeader = await Html.PartialAsync("~/Views/Site/Shared/Header.cshtml");
+    }
+    @partialHeader
+
+    <!-- header -->
+
+    @RenderBody()
+
+    <!-- footer -->
+    @{
+        var partialFooter = await Html.PartialAsync("~/Views/Site/Shared/Footer.cshtml");
+    }
+    @partialFooter
+
+    <!-- Footer -->
+
+    <!-- javascript -->
+	<script src="~/site/js/jquery-1.11.1.min.js"></script>
+    <script src="~/site/js/bootstrap.min.js"></script>
+    <script src="~/site/js/chart.min.js"></script>
+    <script src="~/site/js/chart-data.js"></script>
+
+
+</body>
+</html>

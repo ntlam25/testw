@@ -1,0 +1,120 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Site/Shared/SiteLayout.cshtml";
+}
+
+<!--	Body	-->
+<div id="body">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <nav>
+                    <!--  Begin Top Menu  -->
+                    @{
+                        var partialTopMenu = await Html.PartialAsync("~/Views/Site/Shared/Menu.cshtml");
+                    }
+                    @partialTopMenu
+                    <!--  End Top Menu-->
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div id="main" class="col-lg-8 col-md-12 col-sm-12">
+                <!--	Slider	-->
+                @{
+                    var partialSlider = await Html.PartialAsync("~/Views/Site/Shared/Slider.cshtml");
+                }
+                @partialSlider
+                <!--	End Slider	-->
+                <!--	Feature Product	-->
+                <div class="products">
+                    <h3>Sản phẩm nổi bật</h3>
+                    <div class="product-list card-deck">
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-1.png"></a>
+                            <h4><a href="/product">Oppo F7</a></h4>
+                            <p>Giá Bán: <span>4.990.000đ</span></p>
+                        </div>
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-2.png"></a>
+                            <h4><a href="/product">Oppo F9 Pro</a></h4>
+                            <p>Giá Bán: <span>5.990.000đ</span></p>
+                        </div>
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-3.png"></a>
+                            <h4><a href="/product">Oppo A12E</a></h4>
+                            <p>Giá Bán: <span>4.840.000</span></p>
+                        </div>
+                    </div>
+                    <div class="product-list card-deck">
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-4.png"></a>
+                            <h4><a href="/product">Nokia 6.1 Plus</a></h4>
+                            <p>Giá Bán: <span>4.500.000</span></p>
+                        </div>
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-5.png"></a>
+                            <h4><a href="/product">Nokia 3 - Cũ 99%</a></h4>
+                            <p>Giá Bán: <span>2.390.000</span></p>
+                        </div>
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-6.png"></a>
+                            <h4><a href="/product">Oppo F5</a></h4>
+                            <p>Giá Bán: <span>3.900.000đ</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!--	End Feature Product	-->
+                <!--	Latest Product	-->
+                <div class="products">
+                    <h3>Sản phẩm mới</h3>
+                    <div class="product-list card-deck">
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-7.png"></a>
+                            <h4><a href="/product">iPhone Xs Max - 256GB</a></h4>
+                            <p>Giá Bán: <span>11.990.000đ</span></p>
+                        </div>
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-8.png"></a>
+                            <h4><a href="/product">Samsung Galaxy S8</a></h4>
+                            <p>Giá Bán: <span>4.590.000đ</span></p>
+                        </div>
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-9.png"></a>
+                            <h4><a href="/product">BlackBerry Key 2</a></h4>
+                            <p>Giá Bán: <span>10.990.000đ</span></p>
+                        </div>
+                    </div>
+                    <div class="product-list card-deck">
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-10.png"></a>
+                            <h4><a href="/product">Samsung Galaxy A7</a></h4>
+                            <p>Giá Bán: <span>4.290.000đ</span></p>
+                        </div>
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-11.png"></a>
+                            <h4><a href="/product">Samsung Galaxy S9</a></h4>
+                            <p>Giá Bán: <span>4.990.000đ</span></p>
+                        </div>
+                        <div class="product-item card text-center">
+                            <a href="/product"><img src="~/site/images/product-12.png"></a>
+                            <h4><a href="/product">iPhone XR - 128GB</a></h4>
+                            <p>Giá Bán: <span>9.990.000đ</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!--	End Latest Product	-->
+
+            </div>
+
+            @{
+                var partialSideBar = await Html.PartialAsync("~/Views/Site/Shared/SideBar.cshtml");
+            }
+            @partialSideBar
+        </div>
+    </div>
+</div>
+<!--	End Body	-->
