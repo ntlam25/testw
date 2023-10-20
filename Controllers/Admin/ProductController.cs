@@ -24,10 +24,12 @@ namespace vphone.Controllers.Admin
             return View("~/Views/Admin/Product/addproduct.cshtml");
         }
 
-        [Route("/admin/product/edit")]
-        public IActionResult Edit()
+        [Route("/admin/product/edit/{slug}/{id}")]
+        public IActionResult Edit(int id)
         {
-            return View("~/Views/Admin/Product/editproduct.cshtml");
+            
+            var product = db.Products.FirstOrDefault(p => p.Id == id);
+            return View("~/Views/Admin/Product/editproduct.cshtml", product);
         }
     }
 }
