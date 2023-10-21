@@ -4,27 +4,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace vphone.Models
 {
-    public partial class Order
+    public class Customer
     {
-        public Order()
+        public Customer()
         {
-            OrderDetails = new HashSet<OrderDetail>();
+            Orders = new HashSet<Order>();
         }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public int? CusId { get; set; }   
         public string Name { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public bool State { get; set; }
-        public decimal PriceTotal { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual User User { get; set; } = null!;
-        public virtual Customer Customer { get; set; } = null!;
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

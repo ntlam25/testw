@@ -23,6 +23,52 @@ namespace vphone.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("users");
+
+                entity.HasIndex(e => e.Email, "UQ__User__161CF72489E53FAC")
+                    .IsUnique();
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Address)
+                    .HasMaxLength(255)
+                    .HasColumnName("ADDRESS");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("CREATED_AT");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("EMAIL");
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(255)
+                    .HasColumnName("PASSWORD");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .HasColumnName("NAME");
+
+                entity.Property(e => e.Phone)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("PHONE");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("UPDATED_AT");
+
+                entity.Property(e => e.DeletedAt)
+                    .HasColumnName("DELETED_AT")
+                    .HasDefaultValue(false);
+            });
+
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.ToTable("categories");
@@ -53,9 +99,57 @@ namespace vphone.Models
                     .IsUnicode(false)
                     .HasColumnName("TITLE");
 
+                entity.Property(e => e.UserId).HasColumnName("USER_ID");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Categories)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_categories_users");
+
                 entity.Property(e => e.UpdatedAt)
                     .HasColumnType("datetime")
                     .HasColumnName("UPDATED_AT");
+            });
+
+            modelBuilder.Entity<Customer>(entity =>
+            {
+                entity.ToTable("customers");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .HasColumnName("NAME");
+
+                entity.Property(e => e.Address)
+                    .HasMaxLength(255)
+                    .HasColumnName("ADDRESS");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("EMAIL");
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(255)
+                    .HasColumnName("PASSWORD");
+
+                entity.Property(e => e.Phone)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("PHONE");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("CREATED_AT");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("UPDATED_AT");
+
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -68,6 +162,7 @@ namespace vphone.Models
                 entity.Property(e => e.Id)
                     .ValueGeneratedNever()
                     .HasColumnName("ID");
+
 
                 entity.Property(e => e.Address)
                     .HasMaxLength(255)
@@ -102,49 +197,19 @@ namespace vphone.Models
                 entity.Property(e => e.UpdatedAt)
                     .HasColumnType("datetime")
                     .HasColumnName("UPDATED_AT");
-            });
+                entity.Property(e => e.UserId).HasColumnName("USER_ID");
 
-            modelBuilder.Entity<OrderDetail>(entity =>
-            {
-                entity.ToTable("order_details");
-
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.CreatedAt)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CREATED_AT");
-
-                entity.Property(e => e.Image)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE");
-
-                entity.Property(e => e.Name)
-                    .HasMaxLength(255)
-                    .HasColumnName("NAME");
-
-                entity.Property(e => e.OrderId).HasColumnName("ORDER_ID");
-
-                entity.Property(e => e.Price)
-                    .HasColumnType("money")
-                    .HasColumnName("PRICE");
-
-                entity.Property(e => e.Qty)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("QTY");
-
-                entity.Property(e => e.UpdatedAt)
-                    .HasColumnType("datetime")
-                    .HasColumnName("UPDATED_AT");
-
-                entity.HasOne(d => d.Order)
-                    .WithMany(p => p.OrderDetails)
-                    .HasForeignKey(d => d.OrderId)
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Order_Details_Order");
+                    .HasConstraintName("FK_orders_users");
+
+                entity.HasOne(d => d.Customer)
+                     .WithMany(p => p.Orders)
+                     .HasForeignKey(d => d.CusId)
+                     .OnDelete(DeleteBehavior.ClientSetNull)
+                     .HasConstraintName("FK_orders_customers");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -230,6 +295,18 @@ namespace vphone.Models
                     .HasColumnType("datetime")
                     .HasColumnName("UPDATED_AT");
 
+                entity.Property(e => e.DeletedAt)
+                    .HasColumnName("DELETED_AT")
+                    .HasDefaultValue(false);
+
+                entity.Property(e => e.UserId).HasColumnName("USER_ID");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Products)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_products_users");
+
                 entity.HasOne(d => d.Cat)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CatId)
@@ -237,42 +314,48 @@ namespace vphone.Models
                     .HasConstraintName("FK_products_categories");
             });
 
-            modelBuilder.Entity<User>(entity =>
+            modelBuilder.Entity<OrderDetail>(entity =>
             {
-                entity.ToTable("users");
-
-                entity.HasIndex(e => e.Email, "UQ__User__161CF72489E53FAC")
-                    .IsUnique();
+                entity.ToTable("order_details");
 
                 entity.Property(e => e.Id)
                     .ValueGeneratedNever()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.Address)
-                    .HasMaxLength(255)
-                    .HasColumnName("ADDRESS");
+                entity.Property(e => e.OrderId).HasColumnName("ORDER_ID");
+
+                entity.Property(e => e.PrdId).HasColumnName("PRD_ID");
 
                 entity.Property(e => e.CreatedAt)
                     .HasColumnType("datetime")
                     .HasColumnName("CREATED_AT");
 
-                entity.Property(e => e.Email)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("EMAIL");
+                entity.Property(e => e.OrderId).HasColumnName("ORDER_ID");
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.Price)
+                    .HasColumnType("money")
+                    .HasColumnName("PRICE");
+
+                entity.Property(e => e.Qty)
                     .HasMaxLength(50)
-                    .HasColumnName("NAME");
-
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(20)
                     .IsUnicode(false)
-                    .HasColumnName("PHONE");
+                    .HasColumnName("QTY");
 
                 entity.Property(e => e.UpdatedAt)
                     .HasColumnType("datetime")
                     .HasColumnName("UPDATED_AT");
+
+                entity.HasOne(d => d.Order)
+                    .WithMany(p => p.OrderDetails)
+                    .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Order_Details_orders");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.OrderDetails)
+                    .HasForeignKey(d => d.PrdId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Order_Details_products");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -6,6 +6,12 @@ namespace vphone.Models
 {
     public partial class User
     {
+        public User ()
+        {
+            Products = new HashSet<Product>();
+            Orders = new HashSet<Order>();
+            Categories = new HashSet<Category>();
+        }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,5 +21,10 @@ namespace vphone.Models
         public string Phone { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public bool DeletedAt { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }  
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }
