@@ -7,6 +7,25 @@ namespace vphone.Models
 {
     public partial class QLQuanDTContext : DbContext
     {
+        public override int SaveChanges()
+        {
+            var currentTime = DateTime.Now;
+
+            foreach (var entry in ChangeTracker.Entries())
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Property("CreatedAt").CurrentValue = currentTime;
+                    entry.Property("UpdatedAt").CurrentValue = currentTime;
+                }
+                else if (entry.State == EntityState.Modified)
+                {
+                    entry.Property("UpdatedAt").CurrentValue = currentTime;
+                }
+            }
+
+            return base.SaveChanges();
+        }
         public QLQuanDTContext()
         {
         }

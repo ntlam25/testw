@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace vphone.Models
 {
-    public partial class Product
+    public partial class Product : BaseEntity
     {
         public Product ()
         {
@@ -29,8 +29,6 @@ namespace vphone.Models
         public string InternalMemory { get; set; }
         public string Ram { get; set; }
         public string BatteryCapacity { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
         public bool DeletedAt { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

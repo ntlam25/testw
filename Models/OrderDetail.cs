@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace vphone.Models
 {
-    public partial class OrderDetail
+    public partial class OrderDetail : BaseEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -12,9 +12,6 @@ namespace vphone.Models
         public int OrderId { get; set; }
         public string Qty { get; set; }
         public decimal Price { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-
         public virtual Order Order { get; set; } = null!;
 
         public virtual Product Product { get; set; } = null!;

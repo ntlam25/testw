@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace vphone.Models
 {
-    public partial class Category
+    public partial class Category:BaseEntity
     {
         public Category()
         {
@@ -16,8 +16,6 @@ namespace vphone.Models
         public string Title { get; set; }
         public string Slug { get; set; }
         public string Description { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
         public virtual User User { get; set; } = null!;
