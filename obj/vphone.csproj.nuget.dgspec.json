@@ -59,6 +59,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.5, )"
+            },
+            "NopCommerce.Core": {
+              "target": "Package",
+              "version": "[3.90.0, )"
             }
           },
           "imports": [
