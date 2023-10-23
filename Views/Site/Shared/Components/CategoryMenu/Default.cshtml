@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Category>
+<div id="menu" class="collapse navbar-collapse" style="background:#EB1F26">
+    <ul>
+        @foreach(var cate in Model)
+        {
+            <li class="menu-item"><a href="/category/@cate.Slug" style="color:#fff">@cate.Title</a></li>
+        }
+    </ul>
+</div>
