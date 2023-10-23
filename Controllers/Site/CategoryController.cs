@@ -19,7 +19,7 @@ namespace vphone.Controllers.Site
         public IActionResult Index(string slug, int? page)
         {
             if (page == null) page = 1;
-            int pageSize = 1;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
             var products = db.Products.Where(l => l.Cat.Slug == slug).Include(l => l.Cat).ToList();
             return View("~/Views/Site/Category/Index.cshtml", products.ToPagedList(pageNumber, pageSize));

@@ -57,7 +57,10 @@
                         {
                             <li class="page-item"><a class="page-link" href="/category/@slug/@PreviousPage">Trang trước</a></li>
                         }
-                        <li class="page-item"><a class="page-link" href="/category/@slug/1">1</a></li>  
+                        @if (Model.PageCount != 1)
+                        {
+                            <li class="page-item"><a class="page-link" href="/category/@slug/1">1</a></li>                              
+                        }
                         @if (Model.PageNumber - step >2 && Model.PageNumber !=2)
                         {
                         <li class="page-item"><a class="page-link">...</a></li>
