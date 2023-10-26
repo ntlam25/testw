@@ -6,7 +6,7 @@
     Layout = "~/Views/Site/Shared/SiteLayout.cshtml";
 
 }
-
+@model IEnumerable<Product>
 <!--	Body	-->
 <div id="body">
     <div class="container">
@@ -30,36 +30,39 @@
                 }
                 @partialSlider
                 <!--	End Slider	-->
+                
+                @foreach (var s in Model)
+                {
                 <div id="DH">
                     <div id="DieuHuong">
                         <a href="#">Trang chủ </a>/
                     </div>
 
                     <div id="DieuHuong">
-                        <a href="#">Iphone X</a>
+                        <a href="#">@s.Name</a>
                     </div>
                 </div>
                 <!--	List Product	-->
                 <div id="product">
                     <div>
-                        <h1>iPhone X - 64GB Silver</h1>
+                        <h1>@s.Name</h1>
                     </div>
                     <div id="product-head" class="row">
                         <div id="product-img" class="col-lg-6 col-md-6 col-sm-12">
-                            <img src="~/site/images/product-1.png">
+                            <img src="~/site/images/@s.Image">
                         </div>
                         <div id="product-details" class="col-lg-6 col-md-6 col-sm-12">
                             <ul>
-                                <li id="price-number"><strong>22.990.000đ</strong> <i>| Giá Bán (chưa bao gồm VAT)</i></li>
-                                <li id="status">Còn hàng</li>
-                                <li><span>Công nghệ màn hình: </span> Chính: Dynamic AMOLED 2X, Phụ: Super AMOLED</li>
-                                <li><span>Độ phân giải:</span> Chính: FHD+ (2640 x 1080 Pixels) x Phụ: (260 x 512 Pixels), 2 camera 12 MP, 10 MP</li>
-                                <li><span>Kích thước màn hình:</span> Chính 6.7" & Phụ 1.9" - Tần số quét 120 Hz</li>
-                                <li><span>Hệ điều hành:</span> Android 12</li>
-                                <li><span>Vi xử lý: </span>Snapdragon 8+ Gen 1 8 nhân</li>
-                                <li><span>Bộ nhớ trong: </span>256GB</li>
-                                <li><span>RAM: </span>8 GB</li>
-                                <li><span>Dung lượng pin: </span>3700 mAh</li>
+                                <li id="price-number"><strong>@s.Price đ</strong> <i>| Giá Bán (chưa bao gồm VAT)</i></li>
+                                <li id="status">@s.IsStock</li>
+                                <li><span>Công nghệ màn hình: </span> @s.ScreenTech</li>
+                                <li><span>Độ phân giải:</span> @s.Resolution</li>
+                                <li><span>Kích thước màn hình:</span> @s.ScreenSize</li>
+                                <li><span>Hệ điều hành:</span>@s.OperatingSystem</li>
+                                <li><span>Vi xử lý: </span>@s.Processor</li>
+                                <li><span>Bộ nhớ trong: </span>@s.InternalMemory</li>
+                                <li><span>RAM: </span>@s.Ram</li>
+                                <li><span>Dung lượng pin: </span>@s.BatteryCapacity</li>
                             </ul>
 
                             <div id="order">
@@ -84,25 +87,11 @@
                     </div>
                     <div id="product-body" class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h3>Đánh giá về iPhone X 64GB</h3>
+                            <h3>Đánh giá về @s.Name</h3>
                             <p>
-                                Màn hình OLED có hỗ trợ HDR là một sự nâng cấp mới của Apple thay vì màn hình LCD với IPS được tìm thấy trên iPhone 8 và iPhone 8 Plus đem đến tỉ lệ tương phản cao hơn đáng kể là 1.000.000: 1, so với 1.300: 1 ( iPhone 8 Plus ) và 1.400: 1 ( iPhone 8 ).
+                                @s.Description
                             </p>
-                            <p>
-                                Màn hình OLED mà Apple đang gọi màn hình Super Retina HD có thể hiển thị tông màu đen sâu hơn. Điều này được thực hiện bằng cách tắt các điểm ảnh được hiển thị màu đen còn màn hình LCD thông thường, những điểm ảnh đó được giữ lại. Không những thế, màn hình OLED có thể tiết kiệm pin đáng kể.
-                            </p>
-                            <p>
-                                Cả ba mẫu iPhone mới đều có camera sau 12MP và 7MP cho camera trước, nhưng chỉ iPhone X và iPhone 8 Plus có thêm một cảm biến cho camera sau. Camera kép trên máy như thường lệ: một góc rộng và một tele. Vậy Apple đã tích hợp những gì vào camera của iPhone X?
-                            </p>
-                            <p>
-                                Chống rung quang học (OIS) là một trong những tính năng được nhiều hãng điện thoại trên thế giới áp dụng. Đối với iPhone X, hãng tích hợp chống rung này cho cả hai camera, không như IPhone 8 Plus chỉ có OIS trên camera góc rộng nên camera tele vẫn rung và chất lượng bức hình không đảm bảo.
-                            </p>
-                            <p>
-                                Thứ hai, ống kính tele của iPhone 8 Plus có khẩu độ f / 2.8, trong khi iPhone X có ống kính tele f / 2.2, tạo ra một đường cong nhẹ và có thể chụp thiếu sáng tốt hơn với ống kính tele trên iPhone X.
-                            </p>
-                            <p>
-                                Portrait Mode là tính năng chụp ảnh xóa phông trước đây chỉ có với camera sau của iPhone 7 Plus, hiện được tích hợp trên cả iPhone 8 Plus và iPhone X. Tuy nhiên, nhờ sức mạnh của cảm biến trên mặt trước của iPhone X, Camera TrueDepth cũng có thể chụp với Potrait mode.
-                            </p>
+                            
                         </div>
 
                     </div>
@@ -181,6 +170,7 @@
                     </div>
                     <!--	End Comments List	-->
                 </div>
+                }
                 <!--	End Product	-->
                 <div id="pagination">
                     <ul class="pagination">
