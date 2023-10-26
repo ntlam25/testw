@@ -1,10 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Views",
-    "\\Views\\Admin",
-    "\\Views\\Admin\\Order"
+    ""
   ],
-  "SelectedNode": "\\Views\\Admin\\Order\\order.cshtml",
   "PreviewInSolutionExplorer": false
 }
