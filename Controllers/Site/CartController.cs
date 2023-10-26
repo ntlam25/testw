@@ -17,7 +17,8 @@ namespace vphone.Controllers.Site
         [Route("/cart")]
         public IActionResult Index()
         {
-            return View("~/Views/Site/Cart/Index.cshtml");
+            ViewBag.cart = HttpContext.Session.Get<Cart>("Cart") ?? new Cart();
+            return View("~/Views/Site/Cart/Index.cshtml", ViewBag);
         }
 
         public void AddItem(int productId)
@@ -52,16 +53,29 @@ namespace vphone.Controllers.Site
         public IActionResult AddToCart(int id)
         {
             AddItem(id);
-            return View("~/Views/Site/Home/Index.cshtml");
+            ViewBag.cart = HttpContext.Session.Get<Cart>("Cart") ?? new Cart();
+            return Redirect("/");
         }
 
         [Route("/buy-now/{id}")]
         public IActionResult BuyNow(int id)
         {
             AddItem(id);
-            return View("~/Views/Site/Cart/Index.cshtml");
+            return Redirect("/cart");
         }
 
+        [Route("/delete-item-cart/{id}")]
+        public IActionResult DeleteItemCart(int id)
+        {
+            var cart = HttpContext.Session.Get<Cart>("Cart") ?? new Cart();
+            var item = cart.Items.FirstOrDefault(p => p.ProductId == id);
+            if (item != null)
+            {
+                cart.Items.Remove(item);
+                HttpContext.Session.Set("Cart", cart);
+            }
+            return Redirect("/cart");
+        }
 
     }
 }
