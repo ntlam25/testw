@@ -27,11 +27,12 @@
 <body>
 
     <!-- header -->
-    @{
-        var partialHeader = await Html.PartialAsync("~/Views/Site/Shared/Header.cshtml");
-    }
-    @partialHeader
-
+    <div id="header" style="background: #222222">
+        @{
+            var partialHeader = await Html.PartialAsync("~/Views/Site/Shared/Header.cshtml");
+        }
+        @partialHeader
+    </div>
     <!-- header -->
     <div class="container">
         <div class="row">
@@ -60,7 +61,7 @@
     <script src="~/site/js/bootstrap.min.js"></script>
     <script src="~/site/js/chart.min.js"></script>
     <script src="~/site/js/chart-data.js"></script>
-
-
+    <script src="~/site/js/ajax-cart.js"></script>
+    <script src="~/site/js/confirm-delete.js"></script>
 </body>
 </html>

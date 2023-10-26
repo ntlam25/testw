@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using vphone.Helper;
 using Nop.Services.Catalog;
 using vphone.Models;
+using System.Web.Helpers;
 
 namespace vphone.Controllers.Site
 {
@@ -76,6 +77,32 @@ namespace vphone.Controllers.Site
             }
             return Redirect("/cart");
         }
-
+        public void UpdateCart(int id, int qty)
+        {
+            var cart = HttpContext.Session.Get<Cart>("Cart") ?? new Cart();
+            var existingItem = cart.Items.FirstOrDefault(item => item.ProductId == id);
+            if (existingItem != null)
+            {
+                existingItem.Qty = qty;
+            }
+            HttpContext.Session.Set("Cart", cart);
+        }
+        [Route("/update-item-cart")]
+        [HttpPost]
+        public IActionResult UpdateItemCart(int id, int qty)
+        {
+            UpdateCart(id, qty);
+            ViewBag.cart = HttpContext.Session.Get<Cart>("Cart") ?? new Cart();
+            return PartialView("~/Views/Site/Cart/CartItem.cshtml", ViewBag);
+        }
+        [Route("/update-total-cart")]
+        [HttpPost]
+        public IActionResult UpdateTotalCart(int id, int qty)
+        {
+            UpdateCart(id, qty);
+            var cart = HttpContext.Session.Get<Cart>("Cart") ?? new Cart();
+            ViewBag.totalItem = cart.Items.Sum(item => item.Qty);
+            return PartialView("~/Views/Site/Shared/Header.cshtml", ViewBag);
+        }
     }
 }

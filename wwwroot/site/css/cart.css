@@ -3,6 +3,11 @@
 	border-radius:3px;
 	margin-top:20px;
 	padding:10px 15px;}
+.emty-cart {
+	font-size: 30px;
+	font-weight: bold;
+	color: red;
+}
 .cart-nav-item{
 	height:50px;
 	line-height:50px;
@@ -87,7 +92,8 @@
 @media (max-width:768px){
 	.by-now:first-child{
 		text-align:left;}
-}	
+}
+
 	
 	
 	

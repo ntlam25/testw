@@ -7,7 +7,6 @@
     int totalItem = cart.Items.Sum(item => item.Qty);
 }
 <!--	Header	-->
-<div id="header" style="background: #222222">
     <div class="container">
         <div class="row">
             <div id="logo" class="col-lg-3 col-md-3 col-sm-12">
@@ -20,7 +19,7 @@
                 </form>
             </div>
             <div id="cart" class="col-lg-3 col-md-3 col-sm-12">
-                <a class="mt-4 mr-2" href="/cart">giỏ hàng</a><span class="mt-3">@totalItem</span>
+                <a class="mt-4 mr-2" href="/cart">giỏ hàng</a><span class="mt-3">@(ViewBag.totalItem ?? totalItem)</span>
             </div>
         </div>
     </div>
@@ -28,5 +27,4 @@
     <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#menu">
         <span class="navbar-toggler-icon"></span>
     </button>
-</div>
 <!--	End Header	-->

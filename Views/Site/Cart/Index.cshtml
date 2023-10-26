@@ -1,31 +1,40 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Microsoft.AspNetCore.Http;
+@using vphone.Helper;
+@using vphone.Models;
 @{
     ViewData["Title"] = "Giỏ hàng";
     Layout = "~/Views/Site/Shared/SiteLayout.cshtml";
+
+    var totalPrice = 0;
+    var cart = Context.Request.HttpContext.Session.Get<Cart>("Cart") ?? new Cart();
+    int totalItem = cart.Items.Sum(item => item.Qty);
 }
 
 <!--	Body	-->
-<div id="body">
-    <div class="container">
-        <div class="row">
-            <div id="main" class="col-lg-8 col-md-12 col-sm-12">
-                <!--	Slider	-->
-                @{
-                    var partialSlider = await Html.PartialAsync("~/Views/Site/Shared/Slider.cshtml");
-                }
-                @partialSlider
-                <!--	End Slider	-->
-                <!--	Cart	-->
-                <div id="my-cart">
-                    <div class="row">
-                        <div class="cart-nav-item col-lg-7 col-md-7 col-sm-12">Thông tin sản phẩm</div>
-                        <div class="cart-nav-item col-lg-2 col-md-2 col-sm-12">Tùy chọn</div>
-                        <div class="cart-nav-item col-lg-3 col-md-3 col-sm-12">Giá</div>
-                    </div>
-                    <form method="post">
-                        @foreach(var Item in ViewBag.cart.Items) {
+@if(totalItem != 0) {
+    <div id="body">
+        <div class="container">
+            <div class="row">
+                <div id="main" class="col-lg-8 col-md-12 col-sm-12">
+                    <!--	Slider	-->
+                    @{
+                        var partialSlider = await Html.PartialAsync("~/Views/Site/Shared/Slider.cshtml");
+                    }
+                    @partialSlider
+                    <!--	End Slider	-->
+                    <!--	Cart	-->
+                    <div id="my-cart">
+                        <div class="row">
+                            <div class="cart-nav-item col-lg-7 col-md-7 col-sm-12">Thông tin sản phẩm</div>
+                            <div class="cart-nav-item col-lg-2 col-md-2 col-sm-12">Tùy chọn</div>
+                            <div class="cart-nav-item col-lg-3 col-md-3 col-sm-12">Giá</div>
+                        </div>
+                        @foreach (var Item in ViewBag.cart.Items)
+                        {
+                            totalPrice += (Item.Qty * Item.Price);
                             <div class="cart-item row">
                                 <div class="cart-thumb col-lg-7 col-md-7 col-sm-12">
                                     <img src="~/images/@Item.Image">
@@ -33,67 +42,74 @@
                                 </div>
 
                                 <div class="cart-quantity col-lg-2 col-md-2 col-sm-12">
-                                    <input type="number" id="quantity" class="form-control form-blue quantity" value="@Item.Qty" min="1">
+                                    <input type="number" id="@Item.ProductId" class="form-control form-blue quantity" value="@Item.Qty" min="1">
                                 </div>
-                                <div class="cart-price col-lg-3 col-md-3 col-sm-12"><b style="font-size:15px">@Item.Price đ</b><a href="/delete-item-cart/@Item.ProductId">Xóa</a></div>
+                                <div class="cart-price col-lg-3 col-md-3 col-sm-12"><b style="font-size:15px">@string.Format("{0:N0} đ", Item.Price * Item.Qty)</b><a class="delete-item-cart" href="/delete-item-cart/@Item.ProductId">Xóa</a></div>
+                                <!--Lưu ý: {0:NO} O ở đây được thay thế bằng kết quả tính toán. NO thể hiện là không có phần thập phân. -->
                             </div>
                         }
-                       
+
                         <div class="row">
-                            <div class="cart-thumb col-lg-7 col-md-7 col-sm-12">
-                                <button id="update-cart" class="btn btn-success" type="submit" name="sbm">Cập nhật giỏ hàng</button>
-                            </div>
                             <div class="cart-total col-lg-2 col-md-2 col-sm-12"><b>Tổng cộng:</b></div>
-                            <div class="cart-price col-lg-3 col-md-3 col-sm-12"><b>88.970.000đ</b></div>
+                            <div class="cart-price col-lg-3 col-md-3 col-sm-12"><b>@string.Format("{0:N0} đ", totalPrice)</b></div>
                         </div>
-                    </form>
 
-                </div>
-                <!--	End Cart	-->
-                <!--	Customer Info	-->
-                <div id="customer">
-                    <form method="post">
+                    </div>
+                    <!--	End Cart	-->
+                    <!--	Customer Info	-->
+                    <div id="customer">
+                        <form method="post">
+                            <div class="row">
+
+                                <div id="customer-name" class="col-lg-4 col-md-4 col-sm-12">
+                                    <input placeholder="Họ và tên (bắt buộc)" type="text" name="name" class="form-control" required>
+                                </div>
+                                <div id="customer-phone" class="col-lg-4 col-md-4 col-sm-12">
+                                    <input placeholder="Số điện thoại (bắt buộc)" type="text" name="phone" class="form-control" required>
+                                </div>
+                                <div id="customer-mail" class="col-lg-4 col-md-4 col-sm-12">
+                                    <input placeholder="Email (bắt buộc)" type="text" name="mail" class="form-control" required>
+                                </div>
+                                <div id="customer-add" class="col-lg-12 col-md-12 col-sm-12">
+                                    <input placeholder="Địa chỉ nhà riêng hoặc cơ quan (bắt buộc)" type="text" name="add" class="form-control" required>
+                                </div>
+
+                            </div>
+                        </form>
                         <div class="row">
-
-                            <div id="customer-name" class="col-lg-4 col-md-4 col-sm-12">
-                                <input placeholder="Họ và tên (bắt buộc)" type="text" name="name" class="form-control" required>
+                            <div class="by-now col-lg-6 col-md-6 col-sm-12">
+                                <a href="#">
+                                    <b>Mua ngay</b>
+                                    <span>Giao hàng tận nơi siêu tốc</span>
+                                </a>
                             </div>
-                            <div id="customer-phone" class="col-lg-4 col-md-4 col-sm-12">
-                                <input placeholder="Số điện thoại (bắt buộc)" type="text" name="phone" class="form-control" required>
+                            <div class="by-now col-lg-6 col-md-6 col-sm-12">
+                                <a href="#">
+                                    <b>Trả góp Online</b>
+                                    <span>Vui lòng call (+84) 0988 550 553</span>
+                                </a>
                             </div>
-                            <div id="customer-mail" class="col-lg-4 col-md-4 col-sm-12">
-                                <input placeholder="Email (bắt buộc)" type="text" name="mail" class="form-control" required>
-                            </div>
-                            <div id="customer-add" class="col-lg-12 col-md-12 col-sm-12">
-                                <input placeholder="Địa chỉ nhà riêng hoặc cơ quan (bắt buộc)" type="text" name="add" class="form-control" required>
-                            </div>
-
-                        </div>
-                    </form>
-                    <div class="row">
-                        <div class="by-now col-lg-6 col-md-6 col-sm-12">
-                            <a href="#">
-                                <b>Mua ngay</b>
-                                <span>Giao hàng tận nơi siêu tốc</span>
-                            </a>
-                        </div>
-                        <div class="by-now col-lg-6 col-md-6 col-sm-12">
-                            <a href="#">
-                                <b>Trả góp Online</b>
-                                <span>Vui lòng call (+84) 0988 550 553</span>
-                            </a>
                         </div>
                     </div>
+                    <!--	End Customer Info	-->
+
                 </div>
-                <!--	End Customer Info	-->
+                @{
+                    var partialSideBar = await Html.PartialAsync("~/Views/Site/Shared/SideBar.cshtml");
+                }
+                @partialSideBar
 
             </div>
-            @{
-                var partialSideBar = await Html.PartialAsync("~/Views/Site/Shared/SideBar.cshtml");
-            }
-            @partialSideBar
- 
         </div>
     </div>
-</div>
-<!--	End Body	-->
+    <!--	End Body	-->
+    <script src="~/site/js/ajax-cart.js"></script>
+
+}else{
+    <div class="container" style="padding: 130px 0;">
+        <div style="font-size: 25px; font-weight: bold; text-align:center" class="emty-cart">Chưa có sản phẩm nào trong giỏ hàng.</div>
+        <div style="font-size: 25px; font-weight: bold; text-align:center" class="emty-cart">Quý khách vui lòng bấm <a style="font-size: 27px; font-weight: bold; color: green; text-decoration:underline" href="/">quay lại</a> để tiếp tục mua sắm</div>
+    </div>
+}
+
+

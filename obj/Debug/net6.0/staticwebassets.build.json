@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9lJbjryyNK4C8aZ8v2CgCK26u2TOa0FVnmljy2a/oT4=",
+  "Hash": "JcOE9SqkrmZyul0OVRXv5FPdBmYm4WRPkIzPVrUu+8s=",
   "Source": "vphone",
   "BasePath": "_content/vphone",
   "Mode": "Default",
@@ -3281,6 +3281,23 @@
       "OriginalItemSpec": "wwwroot\\site\\images\\slide-6.png"
     },
     {
+      "Identity": "F:\\lap_trinh_web\\vmobile\\vmobile\\wwwroot\\site\\js\\ajax-cart.js",
+      "SourceId": "vphone",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\lap_trinh_web\\vmobile\\vmobile\\wwwroot\\",
+      "BasePath": "_content/vphone",
+      "RelativePath": "site/js/ajax-cart.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\site\\js\\ajax-cart.js"
+    },
+    {
       "Identity": "F:\\lap_trinh_web\\vmobile\\vmobile\\wwwroot\\site\\js\\bootstrap.bundle.js",
       "SourceId": "vphone",
       "SourceType": "Discovered",
@@ -3415,6 +3432,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\site\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Identity": "F:\\lap_trinh_web\\vmobile\\vmobile\\wwwroot\\site\\js\\confirm-delete.js",
+      "SourceId": "vphone",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\lap_trinh_web\\vmobile\\vmobile\\wwwroot\\",
+      "BasePath": "_content/vphone",
+      "RelativePath": "site/js/confirm-delete.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\site\\js\\confirm-delete.js"
     },
     {
       "Identity": "F:\\lap_trinh_web\\vmobile\\vmobile\\wwwroot\\site\\js\\jquery-3.3.1.js",
