@@ -22,6 +22,11 @@ namespace vphone.Models
                 {
                     entry.Property("UpdatedAt").CurrentValue = currentTime;
                 }
+                if (entry.State == EntityState.Deleted)
+                {
+                    entry.State = EntityState.Modified;
+                    entry.CurrentValues["IsDeleted"] = true;
+                }
             }
 
             return base.SaveChanges();
@@ -50,7 +55,8 @@ namespace vphone.Models
                     .IsUnique();
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    .UseIdentityColumn(1, 1)
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.Address)
@@ -86,6 +92,7 @@ namespace vphone.Models
                 entity.Property(e => e.DeletedAt)
                     .HasColumnName("DELETED_AT")
                     .HasDefaultValue(false);
+                
             });
 
             modelBuilder.Entity<Category>(entity =>

@@ -16,93 +16,93 @@ namespace vphone.Data
                 }
                 var users = new User[]
                 {
-                    new User{Id = 1, Name = "Nguyễn Văn Triệu", Email="admin@gmail.com", Password = "123456", Address="Nam Định", Phone="0123456789"},
-                    new User{Id = 2, Name = "Nguyễn Danh Trường", Email="truong@gmail.com", Password = "123456", Address="Hà Nội", Phone="0123456789"},
-                    new User{Id = 3, Name = "Nguyễn Tùng Lâm", Email="lam@gmail.com", Password = "123456", Address="Hà Nội", Phone="0123456789"},
-                    new User{Id = 4, Name = "Bùi Xuân Nam", Email="nam@gmail.com", Password = "123456", Address="Hà Nội", Phone="0123456789"},
-                    new User{Id = 5, Name = "Vũ Đức Lân", Email="lan@gmail.com", Password = "123456", Address="Hà Nội", Phone="0123456789"},
+                    new User{ Name = "Nguyễn Văn Triệu", Email="admin@gmail.com", Password = "123456", Address="Nam Định", Phone="0123456789"},
+                    new User{ Name = "Nguyễn Danh Trường", Email="truong@gmail.com", Password = "123456", Address="Hà Nội", Phone="0123456789"},
+                    new User{Name = "Nguyễn Tùng Lâm", Email="lam@gmail.com", Password = "123456", Address="Hà Nội", Phone="0123456789"},
+                    new User{Name = "Bùi Xuân Nam", Email="nam@gmail.com", Password = "123456", Address="Hà Nội", Phone="0123456789"},
+                    new User{Name = "Vũ Đức Lân", Email="lan@gmail.com", Password = "123456", Address="Hà Nội", Phone="0123456789"},
                 };
                 foreach (var user in users)
                 {
                     context.Users.Add(user);
                 }
                 context.SaveChanges();
-                if (context.Categories.Any())
-                {
-                    return;
-                }
-                var categories = new Category[]
-                {
-                    new Category{Id = 1, Title = "Iphone", Slug ="Iphone", Description = "Điện thoại Iphone" ,UserId=1},
-                    new Category{Id = 2, Title = "Samsung", Slug ="Samsung", Description = "Điện thoại Samsung" ,UserId=1 },
-                    new Category{Id = 3, Title = "Xiaomi", Slug ="Xiaomi", Description = "Điện thoại Xiaomi" ,UserId=1 }
+                ////if (context.categories.any())
+                ////{
+                ////    return;
+                ////}
+                ////var categories = new category[]
+                ////{
+                ////    new category{id = 1, title = "iphone", slug ="iphone", description = "điện thoại iphone" ,userid=1},
+                ////    new category{id = 2, title = "samsung", slug ="samsung", description = "điện thoại samsung" ,userid=1 },
+                ////    new category{id = 3, title = "xiaomi", slug ="xiaomi", description = "điện thoại xiaomi" ,userid=1 }
 
-                };
-                foreach (var category in categories)
-                {
-                    context.Categories.Add(category);
-                }
-                context.SaveChanges();
+                ////};
+                ////foreach (var category in categories)
+                ////{
+                ////    context.categories.add(category);
+                ////}
+                ////context.savechanges();
 
-                if (context.Products.Any())
-                {
-                    return;
-                }
-                var products = new Product[]
-                {
-                    new Product{Id = 1 ,UserId=1, Name = "Điện thoại di động iPhone 15 Pro Max (512GB) - Chính hãng VN/A", Price = 39750000,IsStock = true, CatId = 1, Image = "iphone-15-pro-max-blue-titanium-pure.png"/*Thêm vào image bên ngoài*/, Description = "iPhone 15 Pro Max đem đến cho người dùng đa dạng sự lựa chọn với ba phiên bản bộ nhớ trong lần lượt là 256GB/512GB/1TB và bốn lựa chọn màu gồm Titan Tự Nhiên/Titan Trắng/Titan Xanh/Titan Đen. Ngoài việc sử dụng chất liệu Titan mới, những cải tiến về cấu hình được Apple cập nhật và trang bị hứa hẹn đem đến trải nghiệm người dùng nâng cao hơn.", Slug = "Dien-thoai-di-dong-iphone-15-pro-max-512GB-chinh-hang-VNA", IsFeatured = true, ScreenTech = "Màn hình Super Retina XDR, Tấm nền OLED, Dynamic Island, Công nghệ ProMotion với tốc độ làm mới thích ứng lên đến 120Hz, Màn hình Luôn Bật, Màn hình HDR, Tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), Màn hình True Tone, Màn hình có dải màu rộng (P3), Haptic Touch", Resolution = "1290 x 2796, Chính: 48MP, khẩu độ ƒ/1.78, Ultra Wide: 12MP, khẩu độ ƒ/2.2, Telephoto: 12MP, khẩu độ ƒ/2.8, Camera trước TrueDepth 12MP, khẩu độ ƒ/1.9", ScreenSize = "6.7\"", OperatingSystem = "iOS 17", Processor = "A17 Pro", InternalMemory = "512GB", Ram = "8GB", BatteryCapacity = "4.422mAh"},
-                    new Product{Id = 2 ,UserId=1, Name = "Điện thoại di động iPhone 15 Pro Max (256GB) - Chính hãng VN/A", Price = 33850000,IsStock = true, CatId = 1, Image = "iphone-15-pro-max-natural-titanium-pure.png", Description = "iPhone 15 Pro Max đem đến cho người dùng đa dạng sự lựa chọn với ba phiên bản bộ nhớ trong lần lượt là 256GB/512GB/1TB và bốn lựa chọn màu gồm Titan Tự Nhiên/Titan Trắng/Titan Xanh/Titan Đen. Ngoài việc sử dụng chất liệu Titan mới, những cải tiến về cấu hình được Apple cập nhật và trang bị hứa hẹn đem đến trải nghiệm người dùng nâng cao hơn.", Slug = "Dien-thoai-di-dong-iphone-15-pro-max-256GB-chinh-hang-VNA", IsFeatured = true, ScreenTech = " Màn hình Super Retina XDR, Tấm nền OLED, Dynamic Island, Công nghệ ProMotion với tốc độ làm mới thích ứng lên đến 120Hz, Màn hình Luôn Bật, Màn hình HDR, Tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), Màn hình True Tone, Màn hình có dải màu rộng (P3), Haptic Touch", Resolution = "1290 x 2796, Chính: 48MP, khẩu độ ƒ/1.78, Ultra Wide: 12MP, khẩu độ ƒ/2.2, Telephoto: 12MP, khẩu độ ƒ/2.8, Camera trước TrueDepth 12MP, khẩu độ ƒ/1.9", ScreenSize = "6.7\"", OperatingSystem = "iOS 17", Processor = "A17 Pro", InternalMemory = "256GB", Ram = "8GB", BatteryCapacity = "4.422mAh"},
-                    new Product{Id = 3 ,UserId=1, Name = "Điện thoại di động iPhone 15 Pro Max (1T) - Chính hãng VN/A", Price = 45990000,IsStock = true, CatId = 1, Image = "iphone-15-pro-max-white-titanium-pure.png", Description = "iPhone 15 Pro Max đem đến cho người dùng đa dạng sự lựa chọn với ba phiên bản bộ nhớ trong lần lượt là 256GB/512GB/1TB và bốn lựa chọn màu gồm Titan Tự Nhiên/Titan Trắng/Titan Xanh/Titan Đen. Ngoài việc sử dụng chất liệu Titan mới, những cải tiến về cấu hình được Apple cập nhật và trang bị hứa hẹn đem đến trải nghiệm người dùng nâng cao hơn.", Slug = "Dien-thoai-di-dong-iphone-15-pro-max-1T-chinh-hang-VNA", IsFeatured = true, ScreenTech = "Màn hình Super Retina XDR, Tấm nền OLED, Dynamic Island, Công nghệ ProMotion với tốc độ làm mới thích ứng lên đến 120Hz, Màn hình Luôn Bật, Màn hình HDR, Tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), Màn hình True Tone, Màn hình có dải màu rộng (P3), Haptic Touch", Resolution = "1290 x 2796, Chính: 48MP, khẩu độ ƒ/1.78, Ultra Wide: 12MP, khẩu độ ƒ/2.2, Telephoto: 12MP, khẩu độ ƒ/2.8, Camera trước TrueDepth 12MP, khẩu độ ƒ/1.9", ScreenSize = "6.7\"", OperatingSystem = "iOS 17", Processor = "A17 Pro", InternalMemory = "1TB", Ram = "8GB", BatteryCapacity = "4.422mAh"},
-                    new Product{Id = 4 ,UserId=1, Name = "Điện thoại di động iPhone 15 Pro (1TB) - Chính hãng VN/A", Price = 42490000,IsStock = true, CatId = 1, Image = "iphone-15-pro-natural-titanium-pure.png", Description = "iPhone 15 Pro sở hữu màn hình Super Retina XDR OLED 6,1 inch với tần số quét 120Hz và độ sáng lên tới 2000 nit. Bên cạnh đó, với con chip A17 Pro mạnh mẽ, máy mang đến hiệu năng cao cùng khả năng xử lý đa nhiệm tuyệt vời. Về camera, iPhone 15 Pro được trang bị cụm camera gồm 3 ống kính: 48MP cho góc rộng, 12MP cho tele và góc siêu rộng cao cấp.", Slug = "Dien-thoai-di-dong-iphone-15-pro-1T-chinh-hang-VNA", IsFeatured = true, ScreenTech = "Màn hình Super Retina XDR, Tấm nền OLED, Dynamic Island, Công nghệ ProMotion với tốc độ làm mới thích ứng lên đến 120Hz, Màn hình Luôn Bật, Màn hình HDR, Tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), Màn hình True Tone, Màn hình có dải màu rộng (P3), Haptic Touch", Resolution = "1179 x 2556, Chính: 48MP, khẩu độ ƒ/1.78, Ultra Wide: 12MP, khẩu độ ƒ/2.2, Telephoto: 12MP, khẩu độ ƒ/2.8, Camera trước TrueDepth 12MP, khẩu độ ƒ/1.9", ScreenSize = " 6.1\"", OperatingSystem = " iOS 17", Processor = "A17 Pro", InternalMemory = "1TB", Ram = "8GB", BatteryCapacity = "3.274 mAh" },
-                    new Product{Id = 5 ,UserId=1, Name = "Điện thoại di động iPhone 15 Pro (512GB) - Chính hãng VN/A", Price = 36490000,IsStock = true, CatId = 1, Image = "iphone-15-pro-white-titanium-pure.png", Description = "iPhone 15 Pro sở hữu màn hình Super Retina XDR OLED 6,1 inch với tần số quét 120Hz và độ sáng lên tới 2000 nit. Bên cạnh đó, với con chip A17 Pro mạnh mẽ, máy mang đến hiệu năng cao cùng khả năng xử lý đa nhiệm tuyệt vời. Về camera, iPhone 15 Pro được trang bị cụm camera gồm 3 ống kính: 48MP cho góc rộng, 12MP cho tele và góc siêu rộng cao cấp.", Slug = "Dien-thoai-di-dong-iphone-15-pro-512GB-chinh-hang-VNA", IsFeatured = true, ScreenTech = "Màn hình Super Retina XDR, Tấm nền OLED, Dynamic Island, Công nghệ ProMotion với tốc độ làm mới thích ứng lên đến 120Hz, Màn hình Luôn Bật, Màn hình HDR, Tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), Màn hình True Tone, Màn hình có dải màu rộng (P3), Haptic Touch", Resolution = "1179 x 2556, Chính: 48MP, khẩu độ ƒ/1.78, Ultra Wide: 12MP, khẩu độ ƒ/2.2, Telephoto: 12MP, khẩu độ ƒ/2.8, Camera trước TrueDepth 12MP, khẩu độ ƒ/1.9", ScreenSize = "6.1\"", OperatingSystem = "iOS 17", Processor = "A17 Pro", InternalMemory = "512GB", Ram = "8GB", BatteryCapacity = "3.274 mAh"},
-                    new Product{Id = 6 ,UserId=1, Name = "Điện thoại di động iPhone 15 Pro (256GB) - Chính hãng VN/A", Price = 29990000,IsStock = true, CatId = 1, Image = "iphone-15-pro-black-titanium-pure.png", Description = "iPhone 15 Pro sở hữu màn hình Super Retina XDR OLED 6,1 inch với tần số quét 120Hz và độ sáng lên tới 2000 nit. Bên cạnh đó, với con chip A17 Pro mạnh mẽ, máy mang đến hiệu năng cao cùng khả năng xử lý đa nhiệm tuyệt vời. Về camera, iPhone 15 Pro được trang bị cụm camera gồm 3 ống kính: 48MP cho góc rộng, 12MP cho tele và góc siêu rộng cao cấp.", Slug = "Dien-thoai-di-dong-iphone-15-pro-256GB-chinh-hang-VNA", IsFeatured = true, ScreenTech = "Màn hình Super Retina XDR, Tấm nền OLED, Dynamic Island, Công nghệ ProMotion với tốc độ làm mới thích ứng lên đến 120Hz, Màn hình Luôn Bật, Màn hình HDR, Tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), Màn hình True Tone, Màn hình có dải màu rộng (P3), Haptic Touch", Resolution = " 1179 x 2556, Chính: 48MP, khẩu độ ƒ/1.78, Ultra Wide: 12MP, khẩu độ ƒ/2.2, Telephoto: 12MP, khẩu độ ƒ/2.8, Camera trước TrueDepth 12MP, khẩu độ ƒ/1.9", ScreenSize = "6.1\"", OperatingSystem = "iOS 17", Processor = "A17 Pro", InternalMemory = "256GB", Ram = "8GB", BatteryCapacity = "3.274 mAh"},
-                    new Product{Id = 7 ,UserId=1, Name = "Điện thoại di động iPhone 15 Pro (128GB) - Chính hãng VN/A", Price = 27490000,IsStock = true, CatId = 1, Image = "iphone-15-pro-blue-titanium-pure.png", Description = "iPhone 15 Pro sở hữu màn hình Super Retina XDR OLED 6,1 inch với tần số quét 120Hz và độ sáng lên tới 2000 nit. Bên cạnh đó, với con chip A17 Pro mạnh mẽ, máy mang đến hiệu năng cao cùng khả năng xử lý đa nhiệm tuyệt vời. Về camera, iPhone 15 Pro được trang bị cụm camera gồm 3 ống kính: 48MP cho góc rộng, 12MP cho tele và góc siêu rộng cao cấp.", Slug = "Dien-thoai-di-dong-iphone-15-pro-128GB-chinh-hang-VNA", IsFeatured = true, ScreenTech = "Màn hình Super Retina XDR, Tấm nền OLED, Dynamic Island, Công nghệ ProMotion với tốc độ làm mới thích ứng lên đến 120Hz, Màn hình Luôn Bật, Màn hình HDR, Tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), Màn hình True Tone, Màn hình có dải màu rộng (P3), Haptic Touch", Resolution = "1179 x 2556, Chính: 48MP, khẩu độ ƒ/1.78, Ultra Wide: 12MP, khẩu độ ƒ/2.2, Telephoto: 12MP, khẩu độ ƒ/2.8, Camera trước TrueDepth 12MP, khẩu độ ƒ/1.9", ScreenSize = " 6.1\"", OperatingSystem = " iOS 17", Processor = "A17 Pro", InternalMemory = "128GB", Ram = "8GB", BatteryCapacity = "3.274 mAh" },
-                      new Product{Id = 8,
-                        UserId=1,
-                        Name ="Điện thoại di động  Samsung Galaxy Z Fold5",
-                        Price = 32990000,
-                        IsStock = true,
-                        CatId = 2,
-                        Image = "zfold5.png",
-                        Description = "#",
-                        Slug = "Galaxy Z Fold5",
-                        IsFeatured = false,
-                        ScreenTech = "Dynamic AMOLED 2X",
-                        Resolution = "2176 x 1812 with 2316 x 904",
-                        ScreenSize = "7.6 inch and 6,7 inch",
-                        OperatingSystem = "OneUI 5.1.1 / Android 13",
-                        Processor = "Snapdragon® 8 Gen 2",
-                        InternalMemory = "256GB",
-                        Ram = "12GB",
-                        BatteryCapacity = "4400 mAh"
-                    },
-                     new Product{Id = 9,
-                        UserId=1,
-                        Name ="Điện thoại di động Xiaomi 12T (8GB/128GB) - Chính hãng",
-                        Price = 9880000,
-                        IsStock = true,
-                        CatId = 3,
-                        Image = "xiaomi12t.png",
-                        Description = "#",
-                        Slug = "Xiaomi 12T",
-                        IsFeatured = false,
-                        ScreenTech = "AMOLED DotDisplay",
-                        Resolution = "1220x2712",
-                        ScreenSize = "6,67 inch",
-                        OperatingSystem = "MIUI 13, Android 12",
-                        Processor = "Dimensity 8100-Ultra",
-                        InternalMemory = "128GB",
-                        Ram = "8GB",
-                        BatteryCapacity ="5000mAh"
-                    },
-                    //new Product{Id = 15, Name = "", Price = ,IsStock = , CatId = , Image = , Description = , Slug = , IsFeatured = , ScreenTech = "", Resolution = "", ScreenSize = "", OperatingSystem = "", Processor = "", InternalMemory = "", Ram = "", BatteryCapacity = "", CreatedAt =, UpdatedAt = , Cat = },
+                ////if (context.products.any())
+                ////{
+                ////    return;
+                ////}
+                ////var products = new product[]
+                ////{
+                ////    new product{id = 1 ,userid=1, name = "điện thoại di động iphone 15 pro max (512gb) - chính hãng vn/a", price = 39750000,isstock = true, catid = 1, image = "iphone-15-pro-max-blue-titanium-pure.png"/*thêm vào image bên ngoài*/, description = "iphone 15 pro max đem đến cho người dùng đa dạng sự lựa chọn với ba phiên bản bộ nhớ trong lần lượt là 256gb/512gb/1tb và bốn lựa chọn màu gồm titan tự nhiên/titan trắng/titan xanh/titan đen. ngoài việc sử dụng chất liệu titan mới, những cải tiến về cấu hình được apple cập nhật và trang bị hứa hẹn đem đến trải nghiệm người dùng nâng cao hơn.", slug = "dien-thoai-di-dong-iphone-15-pro-max-512gb-chinh-hang-vna", isfeatured = true, screentech = "màn hình super retina xdr, tấm nền oled, dynamic island, công nghệ promotion với tốc độ làm mới thích ứng lên đến 120hz, màn hình luôn bật, màn hình hdr, tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), màn hình true tone, màn hình có dải màu rộng (p3), haptic touch", resolution = "1290 x 2796, chính: 48mp, khẩu độ ƒ/1.78, ultra wide: 12mp, khẩu độ ƒ/2.2, telephoto: 12mp, khẩu độ ƒ/2.8, camera trước truedepth 12mp, khẩu độ ƒ/1.9", screensize = "6.7\"", operatingsystem = "ios 17", processor = "a17 pro", internalmemory = "512gb", ram = "8gb", batterycapacity = "4.422mah"},
+                ////    new product{id = 2 ,userid=1, name = "điện thoại di động iphone 15 pro max (256gb) - chính hãng vn/a", price = 33850000,isstock = true, catid = 1, image = "iphone-15-pro-max-natural-titanium-pure.png", description = "iphone 15 pro max đem đến cho người dùng đa dạng sự lựa chọn với ba phiên bản bộ nhớ trong lần lượt là 256gb/512gb/1tb và bốn lựa chọn màu gồm titan tự nhiên/titan trắng/titan xanh/titan đen. ngoài việc sử dụng chất liệu titan mới, những cải tiến về cấu hình được apple cập nhật và trang bị hứa hẹn đem đến trải nghiệm người dùng nâng cao hơn.", slug = "dien-thoai-di-dong-iphone-15-pro-max-256gb-chinh-hang-vna", isfeatured = true, screentech = " màn hình super retina xdr, tấm nền oled, dynamic island, công nghệ promotion với tốc độ làm mới thích ứng lên đến 120hz, màn hình luôn bật, màn hình hdr, tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), màn hình true tone, màn hình có dải màu rộng (p3), haptic touch", resolution = "1290 x 2796, chính: 48mp, khẩu độ ƒ/1.78, ultra wide: 12mp, khẩu độ ƒ/2.2, telephoto: 12mp, khẩu độ ƒ/2.8, camera trước truedepth 12mp, khẩu độ ƒ/1.9", screensize = "6.7\"", operatingsystem = "ios 17", processor = "a17 pro", internalmemory = "256gb", ram = "8gb", batterycapacity = "4.422mah"},
+                ////    new product{id = 3 ,userid=1, name = "điện thoại di động iphone 15 pro max (1t) - chính hãng vn/a", price = 45990000,isstock = true, catid = 1, image = "iphone-15-pro-max-white-titanium-pure.png", description = "iphone 15 pro max đem đến cho người dùng đa dạng sự lựa chọn với ba phiên bản bộ nhớ trong lần lượt là 256gb/512gb/1tb và bốn lựa chọn màu gồm titan tự nhiên/titan trắng/titan xanh/titan đen. ngoài việc sử dụng chất liệu titan mới, những cải tiến về cấu hình được apple cập nhật và trang bị hứa hẹn đem đến trải nghiệm người dùng nâng cao hơn.", slug = "dien-thoai-di-dong-iphone-15-pro-max-1t-chinh-hang-vna", isfeatured = true, screentech = "màn hình super retina xdr, tấm nền oled, dynamic island, công nghệ promotion với tốc độ làm mới thích ứng lên đến 120hz, màn hình luôn bật, màn hình hdr, tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), màn hình true tone, màn hình có dải màu rộng (p3), haptic touch", resolution = "1290 x 2796, chính: 48mp, khẩu độ ƒ/1.78, ultra wide: 12mp, khẩu độ ƒ/2.2, telephoto: 12mp, khẩu độ ƒ/2.8, camera trước truedepth 12mp, khẩu độ ƒ/1.9", screensize = "6.7\"", operatingsystem = "ios 17", processor = "a17 pro", internalmemory = "1tb", ram = "8gb", batterycapacity = "4.422mah"},
+                ////    new product{id = 4 ,userid=1, name = "điện thoại di động iphone 15 pro (1tb) - chính hãng vn/a", price = 42490000,isstock = true, catid = 1, image = "iphone-15-pro-natural-titanium-pure.png", description = "iphone 15 pro sở hữu màn hình super retina xdr oled 6,1 inch với tần số quét 120hz và độ sáng lên tới 2000 nit. bên cạnh đó, với con chip a17 pro mạnh mẽ, máy mang đến hiệu năng cao cùng khả năng xử lý đa nhiệm tuyệt vời. về camera, iphone 15 pro được trang bị cụm camera gồm 3 ống kính: 48mp cho góc rộng, 12mp cho tele và góc siêu rộng cao cấp.", slug = "dien-thoai-di-dong-iphone-15-pro-1t-chinh-hang-vna", isfeatured = true, screentech = "màn hình super retina xdr, tấm nền oled, dynamic island, công nghệ promotion với tốc độ làm mới thích ứng lên đến 120hz, màn hình luôn bật, màn hình hdr, tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), màn hình true tone, màn hình có dải màu rộng (p3), haptic touch", resolution = "1179 x 2556, chính: 48mp, khẩu độ ƒ/1.78, ultra wide: 12mp, khẩu độ ƒ/2.2, telephoto: 12mp, khẩu độ ƒ/2.8, camera trước truedepth 12mp, khẩu độ ƒ/1.9", screensize = " 6.1\"", operatingsystem = " ios 17", processor = "a17 pro", internalmemory = "1tb", ram = "8gb", batterycapacity = "3.274 mah" },
+                ////    new product{id = 5 ,userid=1, name = "điện thoại di động iphone 15 pro (512gb) - chính hãng vn/a", price = 36490000,isstock = true, catid = 1, image = "iphone-15-pro-white-titanium-pure.png", description = "iphone 15 pro sở hữu màn hình super retina xdr oled 6,1 inch với tần số quét 120hz và độ sáng lên tới 2000 nit. bên cạnh đó, với con chip a17 pro mạnh mẽ, máy mang đến hiệu năng cao cùng khả năng xử lý đa nhiệm tuyệt vời. về camera, iphone 15 pro được trang bị cụm camera gồm 3 ống kính: 48mp cho góc rộng, 12mp cho tele và góc siêu rộng cao cấp.", slug = "dien-thoai-di-dong-iphone-15-pro-512gb-chinh-hang-vna", isfeatured = true, screentech = "màn hình super retina xdr, tấm nền oled, dynamic island, công nghệ promotion với tốc độ làm mới thích ứng lên đến 120hz, màn hình luôn bật, màn hình hdr, tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), màn hình true tone, màn hình có dải màu rộng (p3), haptic touch", resolution = "1179 x 2556, chính: 48mp, khẩu độ ƒ/1.78, ultra wide: 12mp, khẩu độ ƒ/2.2, telephoto: 12mp, khẩu độ ƒ/2.8, camera trước truedepth 12mp, khẩu độ ƒ/1.9", screensize = "6.1\"", operatingsystem = "ios 17", processor = "a17 pro", internalmemory = "512gb", ram = "8gb", batterycapacity = "3.274 mah"},
+                ////    new product{id = 6 ,userid=1, name = "điện thoại di động iphone 15 pro (256gb) - chính hãng vn/a", price = 29990000,isstock = true, catid = 1, image = "iphone-15-pro-black-titanium-pure.png", description = "iphone 15 pro sở hữu màn hình super retina xdr oled 6,1 inch với tần số quét 120hz và độ sáng lên tới 2000 nit. bên cạnh đó, với con chip a17 pro mạnh mẽ, máy mang đến hiệu năng cao cùng khả năng xử lý đa nhiệm tuyệt vời. về camera, iphone 15 pro được trang bị cụm camera gồm 3 ống kính: 48mp cho góc rộng, 12mp cho tele và góc siêu rộng cao cấp.", slug = "dien-thoai-di-dong-iphone-15-pro-256gb-chinh-hang-vna", isfeatured = true, screentech = "màn hình super retina xdr, tấm nền oled, dynamic island, công nghệ promotion với tốc độ làm mới thích ứng lên đến 120hz, màn hình luôn bật, màn hình hdr, tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), màn hình true tone, màn hình có dải màu rộng (p3), haptic touch", resolution = " 1179 x 2556, chính: 48mp, khẩu độ ƒ/1.78, ultra wide: 12mp, khẩu độ ƒ/2.2, telephoto: 12mp, khẩu độ ƒ/2.8, camera trước truedepth 12mp, khẩu độ ƒ/1.9", screensize = "6.1\"", operatingsystem = "ios 17", processor = "a17 pro", internalmemory = "256gb", ram = "8gb", batterycapacity = "3.274 mah"},
+                ////    new product{id = 7 ,userid=1, name = "điện thoại di động iphone 15 pro (128gb) - chính hãng vn/a", price = 27490000,isstock = true, catid = 1, image = "iphone-15-pro-blue-titanium-pure.png", description = "iphone 15 pro sở hữu màn hình super retina xdr oled 6,1 inch với tần số quét 120hz và độ sáng lên tới 2000 nit. bên cạnh đó, với con chip a17 pro mạnh mẽ, máy mang đến hiệu năng cao cùng khả năng xử lý đa nhiệm tuyệt vời. về camera, iphone 15 pro được trang bị cụm camera gồm 3 ống kính: 48mp cho góc rộng, 12mp cho tele và góc siêu rộng cao cấp.", slug = "dien-thoai-di-dong-iphone-15-pro-128gb-chinh-hang-vna", isfeatured = true, screentech = "màn hình super retina xdr, tấm nền oled, dynamic island, công nghệ promotion với tốc độ làm mới thích ứng lên đến 120hz, màn hình luôn bật, màn hình hdr, tỷ lệ tương phản 2.000.000:1 (tiêu chuẩn), màn hình true tone, màn hình có dải màu rộng (p3), haptic touch", resolution = "1179 x 2556, chính: 48mp, khẩu độ ƒ/1.78, ultra wide: 12mp, khẩu độ ƒ/2.2, telephoto: 12mp, khẩu độ ƒ/2.8, camera trước truedepth 12mp, khẩu độ ƒ/1.9", screensize = " 6.1\"", operatingsystem = " ios 17", processor = "a17 pro", internalmemory = "128gb", ram = "8gb", batterycapacity = "3.274 mah" },
+                ////      new product{id = 8,
+                ////        userid=1,
+                ////        name ="điện thoại di động  samsung galaxy z fold5",
+                ////        price = 32990000,
+                ////        isstock = true,
+                ////        catid = 2,
+                ////        image = "zfold5.png",
+                ////        description = "#",
+                ////        slug = "galaxy z fold5",
+                ////        isfeatured = false,
+                ////        screentech = "dynamic amoled 2x",
+                ////        resolution = "2176 x 1812 with 2316 x 904",
+                ////        screensize = "7.6 inch and 6,7 inch",
+                ////        operatingsystem = "oneui 5.1.1 / android 13",
+                ////        processor = "snapdragon® 8 gen 2",
+                ////        internalmemory = "256gb",
+                ////        ram = "12gb",
+                ////        batterycapacity = "4400 mah"
+                ////    },
+                ////     new product{id = 9,
+                ////        userid=1,
+                ////        name ="điện thoại di động xiaomi 12t (8gb/128gb) - chính hãng",
+                ////        price = 9880000,
+                ////        isstock = true,
+                ////        catid = 3,
+                ////        image = "xiaomi12t.png",
+                ////        description = "#",
+                ////        slug = "xiaomi 12t",
+                ////        isfeatured = false,
+                ////        screentech = "amoled dotdisplay",
+                ////        resolution = "1220x2712",
+                ////        screensize = "6,67 inch",
+                ////        operatingsystem = "miui 13, android 12",
+                ////        processor = "dimensity 8100-ultra",
+                ////        internalmemory = "128gb",
+                ////        ram = "8gb",
+                ////        batterycapacity ="5000mah"
+                ////    },
+                ////    //new product{id = 15, name = "", price = ,isstock = , catid = , image = , description = , slug = , isfeatured = , screentech = "", resolution = "", screensize = "", operatingsystem = "", processor = "", internalmemory = "", ram = "", batterycapacity = "", createdat =, updatedat = , cat = },
 
-                };
-                foreach (var product in products)
-                {
-                    context.Products.Add(product);
-                }
-                context.SaveChanges();
+                ////};
+                ////foreach (var product in products)
+                ////{
+                ////    context.products.add(product);
+                ////}
+                //context.savechanges();
             }
         }
     }

@@ -11,7 +11,7 @@
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.14",
           "Microsoft.EntityFrameworkCore.Design": "6.0.14",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.14",
-          "Microsoft.EntityFrameworkCore.Tools": "6.0.5",
+          "Microsoft.EntityFrameworkCore.Tools": "6.0.14",
           "NopCommerce.Core": "3.90.0",
           "X.PagedList": "8.4.7",
           "X.PagedList.Mvc.Core": "8.4.7"
@@ -657,7 +657,7 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/6.0.5": {
+      "Microsoft.EntityFrameworkCore.Tools/6.0.14": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": "6.0.14"
         }
@@ -2459,12 +2459,12 @@
       "path": "microsoft.entityframeworkcore.sqlserver/6.0.14",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.6.0.14.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Tools/6.0.5": {
+    "Microsoft.EntityFrameworkCore.Tools/6.0.14": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aeCzVNLmDl9IfB19WAjrlKcG61Cl4/ZV/9ubifmifKEps+kvMkKIcams5j+8q6dtx9/UL2x3tbOz2BS3eU0sXQ==",
-      "path": "microsoft.entityframeworkcore.tools/6.0.5",
-      "hashPath": "microsoft.entityframeworkcore.tools.6.0.5.nupkg.sha512"
+      "sha512": "sha512-bWVJAYk67pVzhqzvs2dR+WbrnI8ioCZQZLyKGDcGAb0Kf0VLhMv0RvP0vshicYl+IWt8C90rMHZspzD0T+sevw==",
+      "path": "microsoft.entityframeworkcore.tools/6.0.14",
+      "hashPath": "microsoft.entityframeworkcore.tools.6.0.14.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/6.0.0": {
       "type": "package",
